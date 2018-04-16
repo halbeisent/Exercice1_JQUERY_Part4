@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Exercice 1 partie 4 JQUERY</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+    <h1>Shifumi</h1>
+    <select id="weaponList">
+      <option value="Pierre">Pierre</option>
+      <option value="Papier">Papier</option>
+      <option value="Ciseaux">Ciseaux</option>
+    </select>
+    <button type="button" id="shifumiControl">Shifumi !</button>
+    <input type="text" value="" id="computerValue" />
+    <script>
+    $(function() {
+      winCount = 0;
+      $('#shifumiControl').click(function() {
+        var weaponSelect = ['Pierre', 'Papier', 'Ciseaux'];
+        var weaponStrength = ['PierrePierre', 'PierrePapier', 'PierreCiseaux', 'PapierPapier', 'PapierPierre', 'PapierCiseaux', 'CiseauxCiseaux', 'CiseauxPapier', 'CiseauxPierre'];
+        var winnerIdentity = ['Egalité', 'Ordinateur', 'Humain', 'Humain', 'Egalité', 'Ordinateur', 'Ordinateur', 'Humain', 'Egalité'];
+        var randomChoice = Math.floor(Math.random()*3);
+        var computerChoice = weaponSelect[randomChoice];
+        var defeatCount = Number();
+        var winCount = Number();
+        var humanWinRatio = Number();
+        $('#computerValue').val(computerChoice);
+        var mixResults = $('#weaponList').val() + computerChoice;
+        var winIndex = weaponStrength.indexOf(mixResults);
+        var winner = winnerIdentity[winIndex];
+        if (winner == 'Humain') {
+          winCount = winCount + 1;
+        }
+        else if (winner == 'Ordinateur') {
+          defeatCount = defeatCount + 1;
+        }
+        console.log(mixResults);
+        console.log('Le gagnant est: ' +winner);
+        console.log(defeatCount);
+        console.log(winCount);
+        console.log(humanWinRatio);
+      })
+    })
+    </script>
+  </body>
+</html>
